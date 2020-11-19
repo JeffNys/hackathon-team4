@@ -19,7 +19,7 @@ abstract class AbstractController
     /**
      * @var Environment
      */
-    protected Environment $twig;
+    protected $twig;
 
     /**
      *  Initializes this class.
