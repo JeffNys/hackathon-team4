@@ -5,3 +5,19 @@
     background-image: url("/assets/images/noouvelle-picture.jpg");
     background-size: cover;
 }
+
+.text_titre 
+{
+    color: black;
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive;
+    position: absolute;
+    left : 70%;
+    top : 60%;
+    text-align: left;
+}
+
+.text_footer
+{
+    font-family: 'Dancing Script', cursive;
+}
