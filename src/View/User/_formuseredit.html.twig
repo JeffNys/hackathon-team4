@@ -1,0 +1,27 @@
+<div class="mt-5" id="formular">
+    <form action="/User/editUser/{{ user.id }}" method="POST">
+        <input type="hidden" value="{{ user.id }}" name="id">
+        <fieldset>
+            <legend class="text-center">Formulaire de modification de compte</legend>
+            <p class="text-center">
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" placeholder="email@email.com" value="{{ user.email }}">
+            </p>
+            <p class="text-center">
+                <label for="nom">Nom</label>
+                <input id="nom" type="text" name="lastname" placeholder="lastname" value="{{ user.lastname }}">
+            </p>
+            <p class="text-center">
+                <label for="prenom">Prenom</label>
+                <input id="prenom" type="text" name="firstname" placeholder="firstname" value="{{ user.firstname }}">
+            </p>
+            <p class="text-center">
+                <label for="adress">Adresse</label>
+                <input id="adress" type="text" name="adress" placeholder="1 rue de paris 75 001 Paris" value="{{ user.adress }}">
+            </p>
+
+            <button type="submit" class="btn btn-primary">Valider les modifications</button>
+            <button type="button"class="btn btn-primary"><a href="/user/showUser/{{ user.id }}" style="color: white">Retour</a></button>
+        </fieldset>
+    </form>
+</div>
