@@ -1,0 +1,7 @@
+.banner
+{
+    width: 100%;
+    height: 95vh;
+    background-image: url("/assets/images/noouvelle-picture.jpg");
+    background-size: cover;
+}
