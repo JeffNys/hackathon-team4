@@ -1,0 +1,10 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    {{ parent()}} Modification profil
+{% endblock %}
+
+{% block content %}
+    <h1>Modification du profil de {{ user.firstname }} {{ user.lastname }}</h1>
+    {% include 'User/_formuseredit.html.twig' %}
+{% endblock %}
