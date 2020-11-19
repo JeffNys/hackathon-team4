@@ -15,12 +15,11 @@ class UserManager extends AbstractManager
     public function addUser(array $user)
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " VALUES 
-        (null, :email, :lastname, :firstname, :password, :adress)");
+        (null, :email, :password, :firstname, :lastname, null, null)");
         $statement->bindValue(':email', $user['email'], \PDO::PARAM_STR);
-        $statement->bindValue(':lastname', $user['lastname'], \PDO::PARAM_STR);
-        $statement->bindValue(':firstname', $user['firstname'], \PDO::PARAM_STR);
         $statement->bindValue(':password', md5($user['password']), \PDO::PARAM_STR);
-        $statement->bindValue(':adress', $user['adress'], \PDO::PARAM_STR);
+        $statement->bindValue(':firstname', $user['firstname'], \PDO::PARAM_STR);
+        $statement->bindValue(':lastname', $user['lastname'], \PDO::PARAM_STR);
 
         if ($statement->execute()) {
             return (int)$this->pdo->lastInsertId();
@@ -38,11 +37,11 @@ class UserManager extends AbstractManager
     public function updateUser(array $user): bool
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
-            " SET email= :email, lastname= :lastname, firstname= :firstname, adress= :adress WHERE id= :id");
-        $statement->bindValue('email', $user['email'], \PDO::PARAM_STR);
-        $statement->bindValue('lastname', $user['lastname'], \PDO::PARAM_STR);
-        $statement->bindValue('firstname', $user['firstname'], \PDO::PARAM_STR);
-        $statement->bindValue('adress', $user['adress'], \PDO::PARAM_STR);
+            " SET email= :email, password= :password, firstname= :firstname, lastname= :lastname WHERE id= :id");
+        $statement->bindValue(':email', $user['email'], \PDO::PARAM_STR);
+        $statement->bindValue(':password', md5($user['password']), \PDO::PARAM_STR);
+        $statement->bindValue(':firstname', $user['firstname'], \PDO::PARAM_STR);
+        $statement->bindValue(':lastname', $user['lastname'], \PDO::PARAM_STR);
 
         return $statement->execute();
     }

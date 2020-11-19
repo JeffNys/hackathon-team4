@@ -1,43 +1,28 @@
-<div class="mt-5" id="formular">
-    <form action="/User/add" method="POST">
-        <fieldset>
-            <legend class="text-center">Formulaire Inscription</legend>
-            <p class="text-center">
-                <label for="email">Email</label>
-                <input id="email" type="email" name="email" placeholder="email@email.com" value="">
-            </p>
-            <p class="text-center">
-                <label for="nom">Nom</label>
-                <input id="nom" type="text" name="lastname" placeholder="lastname" value="">
-            </p>
-            <p class="text-center">
-                <label for="prenom">Prenom</label>
-                <input id="prenom" type="text" name="firstname" placeholder="firstname" value="">
-            </p>
-            <p class="text-center">
-                <label for="password">Mot de passe</label>
-                <input id="password" type="password" name="password" placeholder="********" value="">
-            </p>
-            <p class="text-center">
-                <label for="adress">Adresse</label>
-                <input id="adress" type="text" name="adress" placeholder="1 rue de paris 75 001 Paris" value="">
-            </p>
-            <button type="submit" class="btn btn-primary">Valider l'inscription</button>
-        </fieldset>
-    </form>
-</div>
-
-    <main class="page registration-page">
-        <section class="clean-block clean-form dark">
-            <div class="container">
-                <div class="block-heading">
-                    <h2 class="text-info">Registration</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
-                </div>
-                <form>
-                    <div class="form-group"><label for="name">Name</label><input class="form-control item" type="text" id="name"></div>
-                    <div class="form-group"><label for="password">Password</label><input class="form-control item" type="password" id="password"></div>
-                    <div class="form-group"><label for="email">Email</label><input class="form-control item" type="email" id="email"></div><button class="btn btn-primary btn-block" type="submit">Sign Up</button></form>
+<main class="page registration-page">
+    <section class="clean-block clean-form dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Registration</h2>
             </div>
-        </section>
-    </main>
+            <form action="/User/add" method="POST">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control item" type="email" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control item" type="password" id="password">
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Firstname</label>
+                    <input class="form-control item" type="text" id="firstname">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Lastname</label>
+                    <input class="form-control item" type="text" id="lastname">
+                </div>
+                <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+            </form>
+        </div>
+    </section>
+</main>

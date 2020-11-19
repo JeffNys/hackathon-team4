@@ -14,10 +14,9 @@ class UserController extends AbstractController
             $user =
                 [
                     'email' => $_POST['email'],
-                    'nom' => $_POST['nom'],
-                    'prenom' => $_POST ['prenom'],
                     'password' => $_POST['password'],
-                    'adress' => $_POST['adress']
+                    'firstname' => $_POST ['firstname'],
+                    'lastname' => $_POST['lastname']
                 ];
             $id = $userManager->addUser($user);
             header('Location:/User/showUser/' . $id);
@@ -48,9 +47,9 @@ class UserController extends AbstractController
         $user = $userManager->selectOneById($id);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user['email'] = $_POST['email'];
+            $user['password'] = $_POST['password'];
             $user['firstname'] = $_POST['firstname'];
             $user['lastname'] = $_POST['lastname'];
-            $user['adress'] = $_POST['adress'];
 
             $userManager->updateUser($user);
             header('Location:/User/showUser/' . $id);
