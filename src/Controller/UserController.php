@@ -23,7 +23,7 @@ class UserController extends AbstractController
             $id = $userManager->addUser($user);
             header('Location:/User/showUser/' . $id);
         } else {
-            return $this->twig->render('User/registrationUser.html.twig');
+            return $this->twig->render('User/addUser.html.twig');
         }
     }
 
