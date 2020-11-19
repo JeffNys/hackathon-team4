@@ -11,18 +11,17 @@
 namespace App\Model;
 
 use App\Model\Connection;
-use PDO;
 
 /**
  * Abstract class handling default manager.
  */
 abstract class AbstractManager
 {
-    protected PDO $pdo; //variable de connexion
+    protected $pdo; //variable de connexion
 
-    protected string $table;
+    protected $table;
 
-    protected string $className;
+    protected $className;
 
     /**
      * Initializes Manager Abstract class.

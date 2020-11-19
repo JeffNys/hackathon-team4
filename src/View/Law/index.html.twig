@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<main class="page testimonials">
+        <section class="clean-block clean-testimonials dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Law</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                </div>
+
+                {% for laws in law %}
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card clean-testimonial-item border-0 rounded-0">
+                            <div class="card-body">
+                                <p class="card-text">Détail officiel en pdf : {Url vers PDF}</p>
+                                <h3>{Date de dépot}, {Date de vote}</h3>
+                                <h4 class="card-title">{Titre principale}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </section>
+    </main>
+{% endblock %}

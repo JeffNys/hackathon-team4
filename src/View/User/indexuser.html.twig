@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig'%}
+
+    {% block title %}
+        {{ parent()}} Profil client
+    {% endblock %}
+   
+        {% block content %}
+
+            <div>
+                <p>Lastname {{user.lastname}}</p></br>
+                <p>Firstname {{user.firstname}}</p></br>
+                <p>Email {{user.email}}</p></br>
+            </div>
+
+                <button class="btn btn-primary"><a href="/user/showEditUser/{{ user.id }}" style="color: white">Modifier le profil</a></button>
+                <button id="btnSupprimer" class="btn btn-primary">Supprimer le profil</button>
+
+                <div id="overlayUser" class="overlay">
+                    <div id="popup" class="popup">
+                        <h2>Voulez-vous vraiment supprimer votre compte ?</h2>
+                        <button id="popupClose" class="btn btn-primary">Annuler</button>
+                        <button class="btn btn-primary"><a href="/user/deleteUser/{{ user.id }}" style="color: white">Valider la suppression</button>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    let btnSupprimer = document.getElementById('btnSupprimer');
+                    let overlayUser = document.getElementById('overlayUser');
+                    let popupClose = document.getElementById('popupClose');
+
+                    btnSupprimer.addEventListener('click',openModal);
+                    popupClose.addEventListener('click',closeModal);
+
+                    function openModal(){
+                        overlayUser.style.display ='block';
+                    }
+
+                    function closeModal(){
+                        overlayUser.style.display ='none';
+                    }
+                </script>
+
+        {% endblock %}

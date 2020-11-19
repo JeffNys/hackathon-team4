@@ -26,15 +26,15 @@ use PDOException;
  */
 class Connection
 {
-    private PDO $pdoConnection;
+    private $pdoConnection;
 
-    private string $user;
+    private $user;
 
-    private string $host;
+    private $host;
 
-    private string $password;
+    private $password;
 
-    private string $dbName;
+    private $dbName;
 
     /**
      * Initialize connection

@@ -1,0 +1,29 @@
+<main class="page registration-page">
+    <section class="clean-block clean-form dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Modification profil</h2>
+            </div>
+            <form action="/User/editUser/{{ user.id }}" method="POST">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control item" type="text" id="email" value="{{ user.email }}">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control item" type="password" id="password">
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Firstname</label>
+                    <input class="form-control item" type="text" id="firstname" value="{{ user.firstname }}">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Lastname</label>
+                    <input class="form-control item" type="text" id="lastname" value="{{ user.lastname }}">
+                </div>
+                <button class="btn btn-primary btn-block" type="submit">Validate</button>
+                <button type="button"class="btn btn-primary btn-block"><a href="/user/showUser/{{ user.id }}" style="color: white">Back</a></button>
+            </form>
+        </div>
+    </section>
+</main>

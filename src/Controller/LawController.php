@@ -9,9 +9,7 @@
 
 namespace App\Controller;
 
-use App\Model\AssembleeApiManager;
-
-class HomeController extends AbstractController
+class LawController extends AbstractController
 {
     /**
      * Display home page
@@ -23,8 +21,6 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $law = new AssembleeApiManager();
-        $law->getAll();
-        return $this->twig->render('Home/index.html.twig');
+        return $this->twig->render('Law/index.html.twig');
     }
 }
