@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Model\UserManager;
 
-
 class UserController extends AbstractController
 {
 
@@ -48,7 +47,6 @@ class UserController extends AbstractController
         $user = $userManager->selectOneById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             $user['email'] = $_POST['email'];
             $user['password'] = $_POST['password'];
             $user['firstname'] = $_POST['firstname'];

@@ -2,7 +2,6 @@
 
 namespace App\Model;
 
-
 class UserManager extends AbstractManager
 {
     protected const TABLE = 'account';
