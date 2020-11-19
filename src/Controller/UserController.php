@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Model\UserManager;
 
-
 class UserController extends AbstractController
 {
 
@@ -23,7 +22,7 @@ class UserController extends AbstractController
             $id = $userManager->addUser($user);
             header('Location:/User/showUser/' . $id);
         } else {
-            return $this->twig->render('User/registrationUser.html.twig');
+            return $this->twig->render('User/addUser.html.twig');
         }
     }
 
@@ -47,9 +46,7 @@ class UserController extends AbstractController
     {
         $userManager = new UserManager();
         $user = $userManager->selectOneById($id);
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             $user['email'] = $_POST['email'];
             $user['firstname'] = $_POST['firstname'];
             $user['lastname'] = $_POST['lastname'];
