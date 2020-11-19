@@ -15,7 +15,8 @@ class AssembleeApiManager
     public function getAll(): array
     {
         $client = HttpClient::create();
-        
+        $laws = [];
+
         for ($i = 0; $i < 2; $i++) {
 
             $url = $this->urlBase . "j-$i";
@@ -23,7 +24,6 @@ class AssembleeApiManager
 
             $statusCode = $response->getStatusCode(); // get Response status code 200
 
-            $laws = [];
             if ($statusCode === 200) {
                 $content = $response->getContent();
                 // get the response in JSON format
@@ -43,7 +43,8 @@ class AssembleeApiManager
         }
         // at this point, we have the laws url in an array, now, we need date and main title
         $lawsToReturn = [];
-        for ($i = 0; $i < count($laws); $i++) {
+        $counter = count($laws);
+        for ($i = 0; $i < $counter; $i++) {
             $lawsToReturn[$i]['url'] = $laws[$i];
             $path = str_replace ('.pdf', '.json', $laws[$i]);
             $response = $client->request('GET', $path);
