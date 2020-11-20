@@ -17,7 +17,7 @@ class AssembleeApiManager
         $client = HttpClient::create();
         $laws = [];
 
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < 29; $i++) {
 
             $url = $this->urlBase . "j-$i";
             $response = $client->request('GET', $url);
@@ -52,7 +52,6 @@ class AssembleeApiManager
             if ($statusCode === 200) {
                 $content = $response->getContent();
                 $content = $response->toArray();
-                $lawsToReturn[$i]['id'] = "$i";
                 $lawsToReturn[$i]['dateDepot'] = substr($content['cycleDeVie']['chrono']['dateDepot'], 0, 10);
                 $date = date_create($lawsToReturn[$i]['dateDepot']);
                 date_add($date, date_interval_create_from_date_string('30 days'));
@@ -61,5 +60,58 @@ class AssembleeApiManager
             }
         }
         return $lawsToReturn;
+    }
+
+    public function getOne(string $url): array
+    {
+        $lawToReturn['url'] = $url;
+        $path = str_replace ('.pdf', '.json', $url);
+        $client = HttpClient::create();
+        $response = $client->request('GET', $path);
+        $statusCode = $response->getStatusCode(); // get Response status code 200
+
+            if ($statusCode === 200) {
+                $content = $response->getContent();
+                $content = $response->toArray();
+                $lawToReturn['dateDepot'] = substr($content['cycleDeVie']['chrono']['dateDepot'], 0, 10);
+                $date = date_create($lawToReturn['dateDepot']);
+                date_add($date, date_interval_create_from_date_string('30 days'));
+                $lawToReturn['dateVote'] = date_format($date, 'Y-m-d');
+                $lawToReturn['titrePrincipal'] = $content['titres']['titrePrincipal'];
+            }
+        return $lawToReturn;
+    }
+
+    public function getHazard(): array
+    {
+        $client = HttpClient::create();
+        $laws = [];
+        $i = 0;
+        while ([] == $laws) {
+            $url = $this->urlBase . "j-$i";
+            $response = $client->request('GET', $url);
+
+            $statusCode = $response->getStatusCode(); // get Response status code 200
+
+            if ($statusCode === 200) {
+                $content = $response->getContent();
+                // get the response in JSON format
+
+                // now we create array
+                $content2 = str_replace([' ', CHR(13), CHR(10)], [';',';',';'], $content);
+                $bulkLaws = explode(";", $content2);
+                // and search inside if we have a proposition of a new law
+                foreach ($bulkLaws as $value) {
+                    if (strpos($value,"PIONANR5L15") && strpos($value,".pdf")) {
+                        array_push($laws, $value);
+                    }
+                }
+            }
+            if ([] == $laws) {
+                // we have to take time, it's from oficials work
+                sleep ( 2 ); // wait 2 seconds between each call
+            }
+        }
+        return $this->getOne($laws[0]);
     }
 }
