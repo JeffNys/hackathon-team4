@@ -36,11 +36,9 @@ class LawController extends AbstractController
         }
         if ($url != "") {
             $law = $accessApi->getOne($url);
-        }
-        else
-        {
+        } else {
             $law = $accessApi->getHazard();
         }
-        return $this->twig->render('Law/voter.html.twig', ['law' => $law]);       
+        return $this->twig->render('Law/voter.html.twig', ['law' => $law]);
     }
 }
