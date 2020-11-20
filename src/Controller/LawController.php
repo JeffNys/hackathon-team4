@@ -28,15 +28,18 @@ class LawController extends AbstractController
         return $this->twig->render('Law/index.html.twig', ['laws' => $laws]);
     }
 
-    public function voter(string $url = "")
+    public function voter()
     {
         $accessApi = new AssembleeApiManager();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $url = $_POST['url'];
+        }
         if ($url != "") {
             $law = $accessApi->getOne($url);
         }
         else
         {
-            $law = $accessApi->getHazard($url);
+            $law = $accessApi->getHazard();
         }
         return $this->twig->render('Law/voter.html.twig', ['law' => $law]);       
     }
