@@ -31,23 +31,20 @@ class LawController extends AbstractController
 
     public function voter()
     {
+        $tuple = [];
         $accessApi = new AssembleeApiManager();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $url = $_POST['url'];
+            $accessDataBase = new LawManager();
+            $tuple = $accessDataBase->findByUrl($url);
         }
-        $accessDataBase = new LawManager();
-        $tuple = $accessDataBase->findByUrl($url);
-        var_dump($tuple);
         if ($tuple != []) {
             $law = $tuple;
-        }
-        elseif ($url != "") {
+        } elseif ($url != "") {
             $law = $accessApi->getOne($url);
-        }
-        else
-        {
+        } else {
             $law = $accessApi->getHazard();
         }
-        return $this->twig->render('Law/voter.html.twig', ['law' => $law]);       
+        return $this->twig->render('Law/voter.html.twig', ['law' => $law]);
     }
 }

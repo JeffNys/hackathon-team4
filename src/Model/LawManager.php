@@ -4,9 +4,9 @@ namespace App\Model;
 
 class LawManager extends AbstractManager
 {
-    const TABLE = 'law';
+    private const TABLE = 'law';
 
-    const FIELDS = [
+    private const FIELDS = [
         'id',
         'url_loi',
         'date_vote'
