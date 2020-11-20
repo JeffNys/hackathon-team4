@@ -17,7 +17,7 @@ class AssembleeApiManager
         $client = HttpClient::create();
         $laws = [];
 
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < 29; $i++) {
 
             $url = $this->urlBase . "j-$i";
             $response = $client->request('GET', $url);

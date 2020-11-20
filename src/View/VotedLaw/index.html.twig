@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<main >
+        <section class="clean-block clean-testimonials dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Voted Law</h2>
+                    <p>Nous nous basons sur les textes officiels de l'assemblée nationale Française. 
+                        Veuillez excuser le temps nécessaire à la recupérations des données...
+                    </p>
+                </div>
+                <div class="row">
+                    {% for law in laws %}
+                    <div class="col-lg-4">
+                        <div class="card clean-testimonial-item border-0 rounded-0">
+                            <div class="card-body">
+                                <p class="card-text"> {{ law.titrePrincipal }}</p>
+                                <h3>Dépot: {{ law.dateDepot }} <br> Vote: {{ law.dateVote}}</h3>
+                                <h4 class="card-title"><a href="{{ law.url }}">voir le texte officiel</a> </h4>
+                                <p class="card-text"><a href="/law/vote/{{ law.url }}">voter</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
