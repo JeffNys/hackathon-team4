@@ -19,6 +19,7 @@ class AssembleeApiManager
         $laws = [];
 
         for ($i = 0; $i < 2; $i++) {
+
             $url = $this->urlBase . "j-$i";
             $response = $client->request('GET', $url);
 

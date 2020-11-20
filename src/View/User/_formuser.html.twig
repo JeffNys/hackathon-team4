@@ -4,24 +4,24 @@
             <div class="block-heading">
                 <h2 class="text-info">Registration</h2>
             </div>
-            <form action="/User/add" method="POST">
+            <form method="POST">
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input class="form-control item" type="email" id="email">
+                    <input class="form-control item" type="email" id="email" name="email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input class="form-control item" type="password" id="password">
+                    <input class="form-control item" type="password" id="password" name="password">
                 </div>
                 <div class="form-group">
                     <label for="firstname">Firstname</label>
-                    <input class="form-control item" type="text" id="firstname">
+                    <input class="form-control item" type="text" id="firstname" name="firstname">
                 </div>
                 <div class="form-group">
                     <label for="lastname">Lastname</label>
-                    <input class="form-control item" type="text" id="lastname">
+                    <input class="form-control item" type="text" id="lastname" name="lastname">
                 </div>
-                <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+                <input class="btn btn-primary btn-block" type="submit" value="Validate">
             </form>
         </div>
     </section>
