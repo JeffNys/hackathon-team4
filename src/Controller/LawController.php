@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use App\Model\AssembleeApiManager;
+use App\Model\BallotManager;
 use App\Model\LawManager;
 
 class LawController extends AbstractController
@@ -68,7 +69,12 @@ class LawController extends AbstractController
             }
             $row = $accessDataBase->findByUrl($url);
             // now we have to create the pseudo and ballot
-            
+            // let's go for the ballot
+            $ballot['id_loi'] = $row['id'];
+            $ballot['date'] = date("Y-m-d");
+            $ballot['vote'] = intval($_POST['vote']);
+            $accessDataBaseBallot = new BallotManager();
+            $accessDataBaseBallot->create($ballot);
         }
         return $this->status($row['id']);
     }
