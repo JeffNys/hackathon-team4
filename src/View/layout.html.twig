@@ -23,8 +23,12 @@
 </head>
 
 <body>
+{% if session.connected is empty %}
+    {% include '/Layout/header.html.twig' %}
+{% else %}
+    {% include '/User/header.html.twig'%}
+{% endif %}
 
-{% include '/Layout/header.html.twig'%}
 {% block content %}{% endblock %}
 {% include '/Layout/footer.html.twig'%}
 
