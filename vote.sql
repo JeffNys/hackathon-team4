@@ -15,7 +15,8 @@ CREATE TABLE pseudo
 (
     `id` INT NOT NULL auto_increment PRIMARY KEY,
     `id_cripte` TEXT NOT NULL,
-    `id_bulletin` INT NULL
+    `id_bulletin` INT NULL,
+    `id_loi` INT NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE ballot

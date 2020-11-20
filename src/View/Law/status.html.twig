@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>{{ votes.titrePrincipal }}</h3>
+    <a href="{{ votes.url }}">voir le texte officiel</a>
+    <p>Date de dépot: {{ votes.dateDepot }}</p>
+    <p>Date de vote: {{ votes.dateVote }}</p>
+    <ul>
+    {% for vote in votes %}
+        <li>pseudo: {{ vote.idp }}, vote: {{ vote.vote }}, n° bulletin: {{ vote.idb }} </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

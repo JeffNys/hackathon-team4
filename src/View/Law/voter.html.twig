@@ -5,9 +5,23 @@
     <br>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
     <h3>{{ law.titrePrincipal }}</h3>
     <a href="{{ law.url }}">voir le texte officiel</a>
     <p>Date de dépot: {{ law.dateDepot }}</p>
     <p>Date de vote: {{ law.dateVote }}</p>
     {# formulaire de vote à mettre ici #}
+    <h2> votre vote: </h2>
+    <form action="/law/createVote" method="POST">
+        <input name="vote" type="radio" value="nulle" checked="yes">Nulle
+        <input name="vote" type="radio" value="oui">Oui
+        <input name="vote" type="radio" value="non">Non
+        <input type="hidden" name="url" value="{{ law.url }}">
+        <br>
+        <input type="submit" value="valider mon vote">
+    </form>
+    <br>
+    <br>
 {% endblock %}

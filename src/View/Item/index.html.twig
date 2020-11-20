@@ -1,8 +1,15 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+    
+
+
+
+<br><br><br><br><br><br>
+    <br>
     <h1>Items</h1>
     <ul>
+        {{ dump(data) }}
         {% for item in items %}
             <li><a href="/item/show/{{ item.id }}">{{ item.id }}. {{ item.title }}</a></li>
         {% else %}

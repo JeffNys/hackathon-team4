@@ -21,7 +21,16 @@ class LawManager extends AbstractManager
     {
         $sql = "SELECT * FROM $this->table WHERE url_loi=?";
         $query = $this->pdo->prepare($sql);
-        $query->execute(['$url']);
+        $query->execute([$url]);
         return $query->fetch();
+    }
+
+    public function statusOf(int $law)
+    {
+        $sql = "SELECT ballot.id AS idb, ballot.vote, pseudo.id AS idp, law.*
+        FROM ballot JOIN pseudo ON pseudo.id_bulletin=ballot.id
+        AND pseudo JOIN law ON pseudo.id_loi=law.id
+        WHERE law.id=$law";
+        return $this->pdo->query($sql)->fetchAll();
     }
 }

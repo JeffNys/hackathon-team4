@@ -21,17 +21,17 @@ class AssembleeApiManager
         for ($i = 0; $i < 2; $i++) {
             $url = $this->urlBase . "j-$i";
             $response = $client->request('GET', $url);
-            $statusCode = $response->getStatusCode();
-// get Response status code 200
+
+            $statusCode = $response->getStatusCode(); // get Response status code 200
 
             if ($statusCode === 200) {
                 $content = $response->getContent();
-// get the response in JSON format
+                // get the response in JSON format
 
                 // now we create array
                 $content2 = str_replace([' ', CHR(13), CHR(10)], [';',';',';'], $content);
                 $bulkLaws = explode(";", $content2);
-// and search inside if we have a proposition of a new law
+                // and search inside if we have a proposition of a new law
                 foreach ($bulkLaws as $value) {
                     if (strpos($value, "PIONANR5L15") && strpos($value, ".pdf")) {
                         array_push($laws, $value);
@@ -39,9 +39,7 @@ class AssembleeApiManager
                 }
             }
             // we have to take time, it's from oficials work
-
             sleep(2); // wait 2 seconds between each call
-
         }
         // at this point, we have the laws url in an array, now, we need date and main title
         $lawsToReturn = [];
@@ -71,8 +69,7 @@ class AssembleeApiManager
         $path = str_replace('.pdf', '.json', $url);
         $client = HttpClient::create();
         $response = $client->request('GET', $path);
-        $statusCode = $response->getStatusCode();
-// get Response status code 200
+        $statusCode = $response->getStatusCode(); // get Response status code 200
 
         if ($statusCode === 200) {
             $content = $response->getContent();
@@ -94,17 +91,17 @@ class AssembleeApiManager
         while ([] == $laws) {
             $url = $this->urlBase . "j-$backDay";
             $response = $client->request('GET', $url);
-            $statusCode = $response->getStatusCode();
-        // get Response status code 200
+
+            $statusCode = $response->getStatusCode(); // get Response status code 200
 
             if ($statusCode === 200) {
                 $content = $response->getContent();
-// get the response in JSON format
+                // get the response in JSON format
 
                 // now we create array
                 $content2 = str_replace([' ', CHR(13), CHR(10)], [';',';',';'], $content);
                 $bulkLaws = explode(";", $content2);
-// and search inside if we have a proposition of a new law
+                // and search inside if we have a proposition of a new law
                 foreach ($bulkLaws as $value) {
                     if (strpos($value, "PIONANR5L15") && strpos($value, ".pdf")) {
                         array_push($laws, $value);
@@ -112,11 +109,9 @@ class AssembleeApiManager
                 }
             }
             if ([] == $laws) {
-
                 // we have to take time, it's from oficials work
                 sleep(2); // wait 2 seconds between each call
                 $backDay++;
-
             }
         }
         return $this->getOne($laws[0]);
