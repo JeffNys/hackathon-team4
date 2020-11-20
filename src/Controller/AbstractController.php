@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  * Created by PhpStorm.
  * User: root
@@ -16,6 +17,7 @@ use Twig\Loader\FilesystemLoader;
 
 abstract class AbstractController
 {
+
     /**
      * @var Environment
      */
@@ -35,5 +37,6 @@ abstract class AbstractController
             ]
         );
         $this->twig->addExtension(new DebugExtension());
+
     }
 }
