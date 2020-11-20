@@ -15,10 +15,10 @@
                     <div class="col-lg-4">
                         <div class="card clean-testimonial-item border-0 rounded-0">
                             <div class="card-body">
-                                <p class="card-text"> {{ law.titrePrincipal }}</p>
-                                <h3>Dépot: {{ law.dateDepot }} <br> Vote: {{ law.dateVote}}</h3>
-                                <h4 class="card-title"><a href="{{ law.url }}">voir le texte officiel</a> </h4>
-                                <p class="card-text"><a href="/law/vote/{{ law.url }}">voter</a></p>
+                                <p class="card-text"> {{ law.titre_principal }}</p>
+                                <h3>Dépot: {{ law.date_depot }} <br> Vote: {{ law.date_vote}}</h3>
+                                <h4 class="card-title"><a href="{{ law.url_loi }}">voir le texte officiel</a> </h4>
+                                <p class="card-text"><a href="/VotedLaw/status/{{ law.id }}">voir</a></p>
                             </div>
                         </div>
                     </div>
