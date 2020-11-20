@@ -9,6 +9,8 @@
 
 namespace App\Controller;
 
+use App\Model\AssembleeApiManager;
+
 class LawController extends AbstractController
 {
     /**
@@ -21,6 +23,8 @@ class LawController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Law/index.html.twig');
+        $accessApi = new AssembleeApiManager();
+        $laws = $accessApi->getAll();
+        return $this->twig->render('Law/index.html.twig', ['laws' => $laws]);
     }
 }

@@ -1,22 +1,25 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-<main class="page testimonials">
+<main >
         <section class="clean-block clean-testimonials dark">
             <div class="container">
                 <div class="block-heading">
                     <h2 class="text-info">Law</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                    <p>Nous nous basons sur les textes officiels de l'assemblée nationale Française. 
+                        Veuillez excuser le temps nécessaire à la recupérations des données...
+                    </p>
                 </div>
 
-                {% for laws in law %}
+                {% for law in laws %}
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="mb-3 col-12 col-md-6 col-lg-4">
                         <div class="card clean-testimonial-item border-0 rounded-0">
                             <div class="card-body">
-                                <p class="card-text">Détail officiel en pdf : {Url vers PDF}</p>
-                                <h3>{Date de dépot}, {Date de vote}</h3>
-                                <h4 class="card-title">{Titre principale}</h4>
+                                <p class="card-text"> {{ law.titrePrincipal }}</p>
+                                <h3>Dépot: {{ law.dateDepot }} <br> Vote: {{ law.dateVote}}</h3>
+                                <h4 class="card-title"><a href="{{ law.url }}">voir le texte officiel</a> </h4>
+                                <p class="card-text"><a href="/law/vote/{{ law.url }}">voter</a></p>
                             </div>
                         </div>
                     </div>

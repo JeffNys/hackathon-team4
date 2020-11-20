@@ -17,7 +17,7 @@ class AssembleeApiManager
         $client = HttpClient::create();
         $laws = [];
 
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 0; $i < 29; $i++) {
 
             $url = $this->urlBase . "j-$i";
             $response = $client->request('GET', $url);
@@ -52,6 +52,7 @@ class AssembleeApiManager
             if ($statusCode === 200) {
                 $content = $response->getContent();
                 $content = $response->toArray();
+                $lawsToReturn[$i]['id'] = "$i";
                 $lawsToReturn[$i]['dateDepot'] = substr($content['cycleDeVie']['chrono']['dateDepot'], 0, 10);
                 $date = date_create($lawsToReturn[$i]['dateDepot']);
                 date_add($date, date_interval_create_from_date_string('30 days'));
