@@ -22,10 +22,10 @@ class UserController extends AbstractController
                 ];
             $verify = $userManager->verify();
             $error = 'Mail exist';
-            if ($_POST['email']!= $verify['email']) {
-            $id = $userManager->addUser($user);
-            header('Location:/User/showUser/' . $id);
-            }else{
+            if ($_POST['email'] != $verify['email']) {
+                $id = $userManager->addUser($user);
+                header('Location:/User/showUser/' . $id);
+            } else {
                 return $this->twig->render('User/addUser.html.twig', ['error' => $error]);
             }
         } else {
