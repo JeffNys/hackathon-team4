@@ -5,11 +5,16 @@
     {% endblock %}
    
         {% block content %}
-
+            <main class="page registration-page">
+            <section class="clean-block clean-form dark">
+            <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">My informations</h2>
+            </div>
             <div>
-                <p>Lastname {{user.firstname}}</p></br>
-                <p>Firstname {{user.lastname}}</p></br>
-                <p>Email {{user.email}}</p></br>
+                <p>Lastname: {{user.firstname}}</p></br>
+                <p>Firstname: {{user.lastname}}</p></br>
+                <p>Email: {{user.email}}</p></br>
             </div>
 
                 <button class="btn btn-primary"><a href="/user/showEditUser/{{ user.id }}" style="color: white">Modifier le profil</a></button>
@@ -22,6 +27,9 @@
                         <button class="btn btn-primary"><a href="/user/deleteUser/{{ user.id }}" style="color: white">Valider la suppression</button>
                     </div>
                 </div>
+            </div>
+            </section>
+            </main>
 
                 <script type="text/javascript">
                     let btnSupprimer = document.getElementById('btnSupprimer');

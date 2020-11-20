@@ -17,13 +17,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/stylepopup.css">
     {% block stylesheet %}{% endblock %}
     <link rel="icon" href="/assets/images/favicon.png">
 </head>
 
 <body>
+{% if session.connected is empty %}
+    {% include '/Layout/header.html.twig' %}
+{% else %}
+    {% include '/User/header.html.twig'%}
+{% endif %}
 
-{% include '/Layout/header.html.twig'%}
 {% block content %}{% endblock %}
 {% include '/Layout/footer.html.twig'%}
 

@@ -11,6 +11,12 @@ class UserManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+    public function verify()
+    {
+        $statement = $this->pdo->query("SELECT email FROM " . self::TABLE);
+        return $statement->fetch();
+    }
+
     public function addUser(array $user)
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " VALUES 
@@ -30,7 +36,7 @@ class UserManager extends AbstractManager
     {
         $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE email=:email AND password=:password");
         $statement->bindValue(':email', $login['email'], \PDO::PARAM_STR);
-        $statement->bindValue(':password', $login['password'], \PDO::PARAM_STR);
+        $statement->bindValue(':password', md5($login['password']), \PDO::PARAM_STR);
         $statement->execute();
         return $statement->fetch();
     }

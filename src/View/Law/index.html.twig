@@ -18,10 +18,12 @@
                                 <p class="card-text"> {{ law.titrePrincipal }}</p>
                                 <h3>Dépot: {{ law.dateDepot }} <br> Vote: {{ law.dateVote}}</h3>
                                 <h4 class="card-title"><a href="{{ law.url }}">voir le texte officiel</a> </h4>
+                                {% if session.connected != "" %}
                                 <form method="POST" action="/law/voter/">
                                     <input type="hidden" value="{{ law.url }}" name="url">
                                     <input type="submit" value="voter">
                                 </form>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
