@@ -5,8 +5,8 @@ CREATE TABLE account
 ( `id` INT NOT NULL auto_increment PRIMARY KEY,
 `email` VARCHAR(255) NOT NULL,
 `password` TEXT NOT NULL,
-`nom` VARCHAR(255) NOT NULL,
-`prenoms` VARCHAR(255) NOT NULL,
+`lastname` VARCHAR(255) NOT NULL,
+`firstname` VARCHAR(255) NOT NULL,
 `id_verif` INT NULL,
 `id_cripte` TEXT NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

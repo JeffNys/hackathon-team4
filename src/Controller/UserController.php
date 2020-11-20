@@ -46,7 +46,6 @@ class UserController extends AbstractController
             if (is_array($user)) {
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['password'] = $user['password'];
-                $_SESSION['connected'] = $user['connected'];
                 header('Location:/User/showUser/' . $user['id']);
             }
         } else {
