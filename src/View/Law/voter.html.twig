@@ -1,0 +1,9 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h3>{{ law.titrePrincipal }}</h3>
+    <a href="{{ law.url }}">voir le texte officiel</a>
+    <p>Date de dépot: {{ law.dateDepot }}</p>
+    <p>Date de vote: {{ law.dateVote }}</p>
+    {# formulaire de vote à mettre ici #}
+{% endblock %}
