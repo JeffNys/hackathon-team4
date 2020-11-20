@@ -11,6 +11,12 @@ class UserManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+    public function verify()
+    {
+        $statement = $this->pdo->query("SELECT email FROM " . self::TABLE);
+        return $statement->fetch();
+    }
+
     public function addUser(array $user)
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " VALUES 

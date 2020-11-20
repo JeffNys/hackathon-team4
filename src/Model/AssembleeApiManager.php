@@ -41,7 +41,6 @@ class AssembleeApiManager
             // we have to take time, it's from oficials work
 
             sleep(2); // wait 2 seconds between each call
-
         }
         // at this point, we have the laws url in an array, now, we need date and main title
         $lawsToReturn = [];
@@ -112,11 +111,9 @@ class AssembleeApiManager
                 }
             }
             if ([] == $laws) {
-
                 // we have to take time, it's from oficials work
                 sleep(2); // wait 2 seconds between each call
                 $backDay++;
-
             }
         }
         return $this->getOne($laws[0]);
