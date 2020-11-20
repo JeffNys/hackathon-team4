@@ -10,10 +10,9 @@
                         Veuillez excuser le temps nécessaire à la recupérations des données...
                     </p>
                 </div>
-
-                {% for law in laws %}
                 <div class="row">
-                    <div class="mb-3 col-12 col-md-6 col-lg-4">
+                    {% for law in laws %}
+                    <div class="col-lg-4">
                         <div class="card clean-testimonial-item border-0 rounded-0">
                             <div class="card-body">
                                 <p class="card-text"> {{ law.titrePrincipal }}</p>
@@ -23,9 +22,8 @@
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-
             </div>
         </section>
     </main>
