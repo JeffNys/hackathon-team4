@@ -14,11 +14,13 @@ class UserManager extends AbstractManager
     public function addUser(array $user)
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " VALUES 
-        (null, :email, :password, :firstname, :lastname, null, null)");
+        (null, :email, :password, :firstname, :lastname, :id_verif, :id_cripte)");
         $statement->bindValue(':email', $user['email'], \PDO::PARAM_STR);
         $statement->bindValue(':password', md5($user['password']), \PDO::PARAM_STR);
         $statement->bindValue(':firstname', $user['firstname'], \PDO::PARAM_STR);
         $statement->bindValue(':lastname', $user['lastname'], \PDO::PARAM_STR);
+        $statement->bindValue(':id_verif', $user['id_verif'], \PDO::PARAM_INT);
+        $statement->bindValue(':id_cripte', md5($user['id_cripte']), \PDO::PARAM_INT);
 
         if ($statement->execute()) {
             return (int)$this->pdo->lastInsertId();
@@ -28,7 +30,7 @@ class UserManager extends AbstractManager
     {
         $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE email=:email AND password=:password");
         $statement->bindValue(':email', $login['email'], \PDO::PARAM_STR);
-        $statement->bindValue(':password', md5($login['password']), \PDO::PARAM_STR);
+        $statement->bindValue(':password', $login['password'], \PDO::PARAM_STR);
         $statement->execute();
         return $statement->fetch();
     }
@@ -41,6 +43,7 @@ class UserManager extends AbstractManager
         $statement->bindValue(':password', md5($user['password']), \PDO::PARAM_STR);
         $statement->bindValue(':firstname', $user['firstname'], \PDO::PARAM_STR);
         $statement->bindValue(':lastname', $user['lastname'], \PDO::PARAM_STR);
+        $statement->bindValue(':id', $user['id'], \PDO::PARAM_STR);
 
         return $statement->execute();
     }
