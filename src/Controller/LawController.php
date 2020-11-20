@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use App\Model\AssembleeApiManager;
+use App\Model\LawManager;
 
 class LawController extends AbstractController
 {
@@ -34,7 +35,13 @@ class LawController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $url = $_POST['url'];
         }
-        if ($url != "") {
+        $accessDataBase = new LawManager();
+        $tuple = $accessDataBase->findByUrl($url);
+        var_dump($tuple);
+        if ($tuple != []) {
+            $law = $tuple;
+        }
+        elseif ($url != "") {
             $law = $accessApi->getOne($url);
         }
         else
