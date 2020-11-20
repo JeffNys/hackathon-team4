@@ -7,6 +7,7 @@ use Symfony\Component\HttpClient\HttpClient;
 class AssembleeApiManager
 {
     private $urlBase;
+
     public function __construct()
     {
         $this->urlBase = 'http://www.assemblee-nationale.fr/dyn/opendata/list-publication/publication_';
@@ -38,8 +39,9 @@ class AssembleeApiManager
                 }
             }
             // we have to take time, it's from oficials work
-            sleep(2);
-// wait 2 seconds between each call
+
+            sleep(2); // wait 2 seconds between each call
+
         }
         // at this point, we have the laws url in an array, now, we need date and main title
         $lawsToReturn = [];
@@ -64,6 +66,7 @@ class AssembleeApiManager
 
     public function getOne(string $url): array
     {
+        $lawToReturn = [];
         $lawToReturn['url'] = $url;
         $path = str_replace('.pdf', '.json', $url);
         $client = HttpClient::create();
@@ -87,9 +90,9 @@ class AssembleeApiManager
     {
         $client = HttpClient::create();
         $laws = [];
-        $i = 0;
+        $backDay = 0;
         while ([] == $laws) {
-            $url = $this->urlBase . "j-$i";
+            $url = $this->urlBase . "j-$backDay";
             $response = $client->request('GET', $url);
             $statusCode = $response->getStatusCode();
         // get Response status code 200
@@ -109,9 +112,11 @@ class AssembleeApiManager
                 }
             }
             if ([] == $laws) {
-// we have to take time, it's from oficials work
-                sleep(2);
-// wait 2 seconds between each call
+
+                // we have to take time, it's from oficials work
+                sleep(2); // wait 2 seconds between each call
+                $backDay++;
+
             }
         }
         return $this->getOne($laws[0]);
