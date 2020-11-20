@@ -3,7 +3,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE account 
 ( `id` INT NOT NULL auto_increment PRIMARY KEY,
-`login` VARCHAR(255) NOT NULL,
 `email` VARCHAR(255) NOT NULL,
 `password` TEXT NOT NULL,
 `nom` VARCHAR(255) NOT NULL,
@@ -31,5 +30,7 @@ CREATE TABLE law
 (
     `id` INT NOT NULL auto_increment PRIMARY KEY,
     `url_loi` VARCHAR(255) NOT NULL,
-    `date_vote` DATE NULL
+    `titre_principal` TEXT NOT NULL,
+    `date_vote` DATE NULL,
+    `date_depot` DATE NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
