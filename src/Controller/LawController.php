@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use App\Model\AssembleeApiManager;
+use App\Model\LawManager;
 
 class LawController extends AbstractController
 {
@@ -30,17 +31,20 @@ class LawController extends AbstractController
 
     public function voter()
     {
+        $tuple = [];
         $accessApi = new AssembleeApiManager();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $url = $_POST['url'];
+            $accessDataBase = new LawManager();
+            $tuple = $accessDataBase->findByUrl($url);
         }
-        if ($url != "") {
+        if ($tuple != []) {
+            $law = $tuple;
+        } elseif ($url != "") {
             $law = $accessApi->getOne($url);
-        }
-        else
-        {
+        } else {
             $law = $accessApi->getHazard();
         }
-        return $this->twig->render('Law/voter.html.twig', ['law' => $law]);       
+        return $this->twig->render('Law/voter.html.twig', ['law' => $law]);
     }
 }
